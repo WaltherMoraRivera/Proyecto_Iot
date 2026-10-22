@@ -1,0 +1,17 @@
+# Material del curso (INACAP): no se publica
+contexto/*.pdf
+
+# Python
+__pycache__/
+*.pyc
+
+# Compilaciones y empaquetado
+build/
+*.bin
+*.elf
+*.zip
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

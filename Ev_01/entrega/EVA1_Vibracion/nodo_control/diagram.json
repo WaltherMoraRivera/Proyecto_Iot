@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "author": "Walther Mora, Maximiliano Soto",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-led", "id": "ledAlarma", "top": 100, "left": -220, "attrs": { "color": "red", "label": "ALARMA REMOTA" } },
+    { "type": "wokwi-resistor", "id": "r1", "top": 148, "left": -130, "attrs": { "value": "220" } },
+    { "type": "wokwi-led", "id": "ledEnlace", "top": 210, "left": -220, "attrs": { "color": "yellow", "label": "ENLACE CAIDO" } },
+    { "type": "wokwi-resistor", "id": "r2", "top": 258, "left": -130, "attrs": { "value": "220" } }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:25", "r1:2", "red", [] ],
+    [ "r1:1", "ledAlarma:A", "red", [] ],
+    [ "ledAlarma:C", "esp:GND.1", "black", [] ],
+    [ "esp:26", "r2:2", "gold", [] ],
+    [ "r2:1", "ledEnlace:A", "gold", [] ],
+    [ "ledEnlace:C", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
