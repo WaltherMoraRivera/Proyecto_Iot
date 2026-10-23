@@ -1,0 +1,124 @@
+{
+  "version": 1,
+  "author": "Walther Mora, Maximiliano Soto",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 95,
+      "left": 300,
+      "attrs": {
+        "volume": "0.05"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledRojo",
+      "top": 200,
+      "left": 330,
+      "attrs": {
+        "color": "red",
+        "label": "ALARMA"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 245,
+      "left": 215,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledVerde",
+      "top": 290,
+      "left": 330,
+      "attrs": {
+        "color": "green",
+        "label": "VIDA"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r2",
+      "top": 335,
+      "left": 215,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "bz1:2",
+      "esp:18",
+      "orange",
+      []
+    ],
+    [
+      "bz1:1",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp:19",
+      "r1:1",
+      "red",
+      []
+    ],
+    [
+      "r1:2",
+      "ledRojo:A",
+      "red",
+      []
+    ],
+    [
+      "ledRojo:C",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp:23",
+      "r2:1",
+      "green",
+      []
+    ],
+    [
+      "r2:2",
+      "ledVerde:A",
+      "green",
+      []
+    ],
+    [
+      "ledVerde:C",
+      "esp:GND.2",
+      "black",
+      []
+    ]
+  ],
+  "dependencies": {}
+}

@@ -157,12 +157,13 @@ Se necesitan **dos ventanas** del navegador (no dos pestañas de la misma ventan
 1. Abrir <https://wokwi.com/projects/new/esp32>.
 2. En `sketch.ino` pegar `nodo_sensor/nodo_sensor.ino`. En `diagram.json` pegar `nodo_sensor/diagram.json`.
 3. En **Library Manager** → `+` agregar **PubSubClient**.
-4. Repetir los pasos 1 a 3 en otra pestaña con `nodo_control/`.
+4. Repetir los pasos 1 a 3 en **otra ventana** con `nodo_control/`, y poner las dos ventanas lado a lado.
 5. Presionar ▶ en ambas. Esperar "Conectando a MQTT... listo".
 6. En el control debe aparecer `Vibracion: 0 mg (umbral 300) | Estado: NORMAL ...` cada segundo.
 7. En el sensor, hacer clic en el MPU6050 y subir **accel X** a 1 g durante 1 a 2 s y volver a 0 → `TRANSITORIA`. Dejarlo en 1 g más de 3 s → `ANOMALA`, y se encienden el LED rojo y el buzzer.
 8. En el Monitor Serie del control escribir `u 500`, `on`, `off`, `auto` y `u 9000`, y ver las confirmaciones o el rechazo.
 9. Poner el control en `off` y detener su simulación: a los 5 s el sensor vuelve solo a `AUTO`. Al reanudar, el control muestra el enlace recuperado.
+10. **Falla del sensor:** detener el sensor, reemplazar su `diagram.json` por `herramientas/diagram_sin_mpu.json` (el mismo circuito sin el MPU6050) y volver a presionar ▶. El sensor debe mostrar `MPU6050 no responde` y publicar `$V,-1,F,1,A,...`, con el LED rojo y el buzzer encendidos; en el control debe aparecer `Vibracion: --` y `Estado: FALLA DEL SENSOR`. Al terminar, volver a pegar `nodo_sensor/diagram.json`.
 
 **Prueba de seguridad automatizada:** con el nodo sensor corriendo, ejecutar
 
@@ -211,7 +212,8 @@ EVA1_Vibracion/
 │   ├── nodo_control.ino     ← microcontrolador 2
 │   └── diagram.json         ← circuito Wokwi
 ├── herramientas/
-│   └── probar_seguridad.py  ← pruebas de seguridad por MQTT
+│   ├── probar_seguridad.py  ← pruebas de seguridad por MQTT
+│   └── diagram_sin_mpu.json ← circuito del sensor sin MPU6050, para probar la falla
 ├── diagrama_sensor.png      ← captura rotulada del circuito del sensor
 ├── diagrama_control.png     ← captura rotulada del circuito del control
 └── README.md
