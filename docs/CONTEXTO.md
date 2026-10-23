@@ -79,7 +79,7 @@ Están en el Aula Virtual (AAI) y en la carpeta local `contexto/`. No se suben a
 ### Pendiente para la EV1
 
 - [ ] **Ensayo de punta a punta:** los dos nodos corriendo a la vez en Wokwi, en **dos ventanas** del navegador lado a lado. Wokwi frena las pestañas que no están a la vista. Cada nodo se probó por separado contra Python; los dos juntos todavía no.
-- [ ] Probar el estado `F` (falla del sensor) quitando el MPU6050 del `diagram.json`.
+- [x] Probar el estado `F` (falla del sensor) con `herramientas/diagram_sin_mpu.json`: aprobado el 22-10-2026 (P16 del README).
 - [ ] (Opcional) Guardar ambos proyectos en una cuenta de Wokwi para tener enlaces fijos para la demostración.
 - [ ] Armar el `.zip` (o enviar el enlace al repositorio) y que **ambos integrantes** lo suban a Moodle.
 - [ ] Ambos deben poder explicar la firma HMAC y el número de secuencia: son lo que más se aleja de la guía.

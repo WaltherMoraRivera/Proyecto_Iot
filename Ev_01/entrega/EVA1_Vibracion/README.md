@@ -194,8 +194,9 @@ Pruebas hechas el 21-10-2026 en Wokwi. Cada nodo corrió en el simulador y su co
 | P13 | Se cortan los latidos con el sensor en manual | El sensor vuelve a `AUTO` a los 5 s | ✅ A los ~5 s: `$ER,SIN_ENLACE` y las lecturas pasan de modo `M` a `A` |
 | P14 | El sensor deja de publicar | El control avisa enlace caído | ✅ `SIN ENLACE CON EL NODO SENSOR` en el Monitor Serie (el código además enciende el LED amarillo, GPIO 26; no se revisó visualmente) |
 | P15 | Orden desconocida en el control (`xyz`) | Muestra la ayuda, no envía nada | ✅ `Ordenes: u 400 \| on \| off \| auto` |
+| P16 | Falla del sensor: se arranca el sensor con `herramientas/diagram_sin_mpu.json` (sin MPU6050) | `F` con la alarma encendida (estado seguro) | ✅ Prueba del 22-10-2026 con los dos nodos en Wokwi: el sensor muestra `MPU6050 no responde` y publica `$V,-1,F,1,A,…` con LED rojo y buzzer encendidos; el control muestra `Estado: FALLA DEL SENSOR \| Alarma: ENCENDIDA` |
 
-**No probado aún:** el estado `F` (falla del sensor), porque Wokwi no permite desconectar el MPU6050 con la simulación corriendo. Se puede probar quitando el MPU6050 del `diagram.json`: el código debería reportar `$V,-1,F,1,...` con la alarma encendida.
+**Estado `F`:** Wokwi no permite desconectar el MPU6050 con la simulación corriendo, así que la falla se probó arrancando el sensor con el circuito sin MPU6050 (P16).
 
 **Lo que mostraron las pruebas:** la primera versión tomaba la hora (`ahora = millis()`) antes de atender la red. Si en ese momento llegaba un mensaje, la resta sin signo `ahora - ultimoContacto` se daba vuelta: el control marcaba "SIN ENLACE" en cada lectura y el sensor salía de manual al instante. Se corrigió tomando la hora después de `mantenerRed()` en ambos `loop()`.
 
