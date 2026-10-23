@@ -175,7 +175,7 @@ El script hace de atacante: envía un comando válido y luego uno repetido, uno 
 
 ## 9. Pruebas realizadas
 
-Pruebas hechas el 21-10-2026 en Wokwi. Cada nodo corrió en el simulador y su contraparte la hizo un script de Python conectado al mismo broker (`herramientas/probar_seguridad.py` y dos scripts auxiliares de prueba). Así se pudo atacar cada nodo con mensajes falsos que el otro nodo nunca enviaría.
+Pruebas P1 a P15 hechas el 21-10-2026 en Wokwi. Cada nodo corrió en el simulador y su contraparte la hizo un script de Python conectado al mismo broker (`herramientas/probar_seguridad.py` y dos scripts auxiliares de prueba). Así se pudo atacar cada nodo con mensajes falsos que el otro nodo nunca enviaría. P16 y P17 se hicieron el 22-10-2026 con los dos nodos corriendo juntos en Wokwi.
 
 | ID | Caso | Resultado esperado | Resultado obtenido |
 |---|---|---|---|
@@ -195,6 +195,7 @@ Pruebas hechas el 21-10-2026 en Wokwi. Cada nodo corrió en el simulador y su co
 | P14 | El sensor deja de publicar | El control avisa enlace caído | ✅ `SIN ENLACE CON EL NODO SENSOR` en el Monitor Serie (el código además enciende el LED amarillo, GPIO 26; no se revisó visualmente) |
 | P15 | Orden desconocida en el control (`xyz`) | Muestra la ayuda, no envía nada | ✅ `Ordenes: u 400 \| on \| off \| auto` |
 | P16 | Falla del sensor: se arranca el sensor con `herramientas/diagram_sin_mpu.json` (sin MPU6050) | `F` con la alarma encendida (estado seguro) | ✅ Prueba del 22-10-2026 con los dos nodos en Wokwi: el sensor muestra `MPU6050 no responde` y publica `$V,-1,F,1,A,…` con LED rojo y buzzer encendidos; el control muestra `Estado: FALLA DEL SENSOR \| Alarma: ENCENDIDA` |
+| P17 | Ensayo de punta a punta: los dos nodos en Wokwi a la vez, en dos ventanas lado a lado, por el broker MQTT | Lecturas, comandos, rechazo y pérdida de enlace funcionan entre los dos nodos sin scripts de por medio | ✅ Prueba del 22-10-2026 siguiendo la sección 8: lecturas cada segundo en el control; golpe → `TRANSITORIA`; vibración sostenida → `ANOMALA` con LED rojo y buzzer; `u 500`, `on`, `off` y `auto` confirmados; `u 9000` rechazado con `RANGO`; al detener el control en manual, el sensor vuelve a `AUTO` a los ~5 s; al detener el sensor, el control muestra `SIN ENLACE CON EL NODO SENSOR` con el LED amarillo |
 
 **Estado `F`:** Wokwi no permite desconectar el MPU6050 con la simulación corriendo, así que la falla se probó arrancando el sensor con el circuito sin MPU6050 (P16).
 

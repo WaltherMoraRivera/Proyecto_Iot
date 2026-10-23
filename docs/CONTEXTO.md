@@ -1,6 +1,6 @@
 # Contexto del proyecto
 
-Documento de traspaso para quien continúe el trabajo. Resume qué pide el curso, qué se decidió y por qué, en qué estado está cada entrega y qué falta. Fecha de corte: **21-10-2026**.
+Documento de traspaso para quien continúe el trabajo. Resume qué pide el curso, qué se decidió y por qué, en qué estado está cada entrega y qué falta. Fecha de corte: **22-10-2026**.
 
 ## 1. El curso
 
@@ -78,7 +78,7 @@ Están en el Aula Virtual (AAI) y en la carpeta local `contexto/`. No se suben a
 
 ### Pendiente para la EV1
 
-- [ ] **Ensayo de punta a punta:** los dos nodos corriendo a la vez en Wokwi, en **dos ventanas** del navegador lado a lado. Wokwi frena las pestañas que no están a la vista. Cada nodo se probó por separado contra Python; los dos juntos todavía no.
+- [x] **Ensayo de punta a punta:** los dos nodos en Wokwi, en dos ventanas lado a lado. Aprobado el 22-10-2026 (P17 del README).
 - [x] Probar el estado `F` (falla del sensor) con `herramientas/diagram_sin_mpu.json`: aprobado el 22-10-2026 (P16 del README).
 - [ ] (Opcional) Guardar ambos proyectos en una cuenta de Wokwi para tener enlaces fijos para la demostración.
 - [ ] Armar el `.zip` (o enviar el enlace al repositorio) y que **ambos integrantes** lo suban a Moodle.
